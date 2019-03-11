@@ -15,6 +15,8 @@ float hr, vr;  // horizontal and vertical radius of the text
 
 int screenPX, screenPY = 0;
 
+float t = abs(sin(frameCount*0.005));
+
 void setup() {
   
   frameRate(60);

@@ -39,7 +39,7 @@ void removeTuioObject(TuioObject o) {
 void drawObjects() {
   
   for (TuioObject o : tuioClient.getTuioObjectList()) {
-
+    
     // get location and rotation
     int w = o.getScreenX(width);
     int h = o.getScreenY(height);
@@ -50,8 +50,52 @@ void drawObjects() {
     
     float ang = o.getAngle();
     float d = 60;
+    
+    if (o.getSymbolID()==89) {
+      
+      int r_match = 20;
+      int g_match = 150;
+      int b_match = 230;
+      
+      int rad = 50;
+      
+      int r = (int)map(w, 0, width, 0, 255); 
+      int g = (int)map(h, 0, height, 0, 255);
+      //int b = (int)ang;
+      int b = 230;
+     
+      
+     if (abs(r - r_match) < 10 &&
+        abs(g - g_match) < 10 &&
+        abs(b - b_match) < 10) {
+        //background(r, g, b);
+        //background(bg);
+        font = createFont("Arial", 60);
+        textFont(font); 
+        text("ya did it", w, h);
+        
+        
+        r = r_match;
+        g = g_match;
+        b = b_match;
+        
+        reset("Doors_test.jpg");
+        //Object(o);
+      }
+      else {
 
-    if (o.getSymbolID()==86) {
+        if (!(w > 1365-rad && h > 640-rad)){ 
+      
+          fill(r, g, b);
+          ellipse(w, h, rad, rad);
+          
+          //fill(r_match, g_match, b_match);
+          //ellipse(600, 100, 100, 100);
+          //background(bg);
+        }
+      }
+    }
+    else if (o.getSymbolID()==86) {
       
         stroke(206, 215, 229, 50);
         fill(138, 182, 252, 200);
