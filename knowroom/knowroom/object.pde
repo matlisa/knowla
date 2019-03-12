@@ -58,7 +58,7 @@ void drawObjects() {
     
         // rectangle, representing the fiducial
         pushMatrix();
-        translate(width-w, h);
+        translate(w, h);
         //scale(-1,1); // You had it right!
         rotate(ang);
         rect(-d/2, -d/2, d, d);
@@ -84,41 +84,43 @@ void drawObjects() {
         //textFont(font); 
         text("tickle", x, y);
     }
-    else if (o.getSymbolID()==88) {
-      stroke(206, 215, 229, 50);
-      fill(138, 182, 252, 200);
+    //else if (o.getSymbolID()==88) {
+    //  stroke(206, 215, 229, 50);
+    //  fill(138, 182, 252, 200);
   
-      // rectangle, representing the fiducial
-      pushMatrix();
-      translate(width-w, h);
-      //scale(-1,1); // You had it right!
-      rotate(ang);
-      rect(-d/2, -d/2, d, d);
+    //  // rectangle, representing the fiducial
+    //  pushMatrix();
+    //  translate(width-w, h);
+    //  //scale(-1,1); // You had it right!
+    //  rotate(ang);
+    //  rect(-d/2, -d/2, d, d);
       
-      // triangle, representing the upwards direction
-      stroke(206, 215, 229, 50);
-      fill(138, 182, 252, 200);
-      triangle(-d/2, -d/2, 0, -d, d/2, -d/2);
-      popMatrix();
+    //  // triangle, representing the upwards direction
+    //  stroke(206, 215, 229, 50);
+    //  fill(138, 182, 252, 200);
+    //  triangle(-d/2, -d/2, 0, -d, d/2, -d/2);
+    //  popMatrix();
       
-      // draw label on top
-      int id = o.getSymbolID();
-      fill(0);
-      text(id, x_pos, y_pos);
+    //  // draw label on top
+    //  int id = o.getSymbolID();
+    //  fill(0);
+    //  text(id, x_pos, y_pos);
     
-      fill(85, 100, 125, 25);
-      ellipse(x_pos,y_pos, 30, 30);
-    }
+    //  fill(85, 100, 125, 25);
+    //  ellipse(x_pos,y_pos, 30, 30);
+    //}
     else if (o.getSymbolID()==84) {
+      strokeWeight(1);
       fill(255, 100, 125, 25);
       variableEllipse(w, y_pos, screenPX, screenPY);
       screenPX = x_pos;
       screenPY = h;
     }
     else if (o.getSymbolID()==85) {
+      strokeWeight(1);
       fill(100, 255, 50, 25);
-      variableEllipse(x_pos, y_pos, screenPX, screenPY);
-      screenPX = x_pos;
+      variableEllipse(w, y_pos, screenPX, screenPY);
+      screenPX = w;
       screenPY = y_pos;
     }
     else if (o.getSymbolID()==87) {

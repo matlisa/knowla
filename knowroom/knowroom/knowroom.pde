@@ -31,32 +31,24 @@ String message = "tickle";
 float x, y; // X and Y coordinates of text
 float hr, vr;  // horizontal and vertical radius of the text
 
-
-PImage img;
-int slices = 12;
-float angle = PI/slices;
-PShape mySlice;
-float radius;
-
-
 void setup() {
   
   frameRate(24);
   size(1600, 900);
   //fullScreen();
-  //background(255);
+  
+  background(255);
   fill(0);
-  font = createFont("Bahnschrift", 50);
+  font = createFont("Bahnschrift", 48);
   //textAlign(CENTER, CENTER);
   textFont(font);
  
   // level 0 opening
-  reset("door_landing.jpg");
+  update("door_landing.png");
   cur = loadImage("key.png");
-  //text("test", 100, 100);
   
   size(1600,900);
-  buffer = createGraphics(width, height, JAVA2D); 
+  //buffer = createGraphics(width, height, JAVA2D); 
   
   //particles = new ArrayList<Particle>();
   
@@ -65,7 +57,6 @@ void setup() {
   // door 1
   sidi = new Animation("sidi/door_sidi", countDown+1);
   dy = new Animation("dy/door_dy", countDown+1);
-
 
   tuioClient  = new TuioProcessing(this);
   
@@ -78,24 +69,29 @@ void setup() {
   x = width / 2;
   y = height / 2;
   
-
+  pas=TWO_PI/nReflections; 
 }
 
 void reset(String image) {
+
+  //background(255);
+  tint(255,255);
   bg = loadImage(image);
   background(bg);
-  
 }
 
-void draw() {
+void update(String image) {
+  background(255);
+  tint(255,255);
+  bg = loadImage(image);
+  image(bg, 0, 0);
+  //background(bg);
+  
+}
+  
 
+void draw() {
   playLevel(level);
-  
-  
-  // test
-  //stroke(200, 200, 255);
-  //fill(200, 200, 255);
-  //ellipse(mouseX,mouseY,10,10);
 }
 
 void playLevel(int i) {
@@ -103,29 +99,24 @@ void playLevel(int i) {
     level0();
   }
   else if (i == 1) {
-
     PImage l0 = loadImage("level0.jpg");
-    
     //if (transparency > 0) { transparency -= 10; }
     //tint(255, transparency);
     //image(l0, 0, 0);
     
     if (countDown == 0) {
-      tint(255,100);
+      //tint(255,100);
       level1();
     }
     else if (countDown == 1) {
       reset("sidi/door_sidi00.jpg");
       countDown--;
-      //frame = 0;
     }
     else {
-      
       transparency = transparency-10;
       background(255);
       tint(255,transparency);
       image(l0, 0,0);
-      
       countDown--;
     }
   }
@@ -138,13 +129,12 @@ void playLevel(int i) {
     //popMatrix();
 
     if (countDown == 0) {
+      //tint(255,100);
       level2();
     }
     else if (countDown == 1) {
-      //background(255);
       reset("dy/door_dy00.jpg");
       countDown--;
-      //frame = 0;
     }
     else {
       countDown--;
@@ -153,12 +143,12 @@ void playLevel(int i) {
       //rotate(PI);
       //image(cur, 0, 0, 45, 100);
       //popMatrix();
-
     }
   }
   else if (i == 3) {
     dy.display(0,0);
     if (countDown == 0) {
+      tint(255,100);
       level3();
     }
     else if (countDown == 1) {
@@ -212,6 +202,7 @@ class Animation {
       if (frame < imageCount-1) {
         frame = (frame+1) % imageCount;
         image(images[frame], xpos, ypos);
+        tint(255,100);
       }
   }
   

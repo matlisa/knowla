@@ -41,18 +41,15 @@ void level0() {
     //triangle(-d/4, -d/4, 0, -d, d/4, -d/4);
     popMatrix();
     
-    fill(255);
-    //stroke(0);
-    rect(80,50,275,75);
-    fill(0);
-    
-    text("angle: "+deg, 100, 100);
+    upperLeftText("angle: "+deg, 48, color(0));
+    upperRightText("remember to always use the doors for a clue", 30, color(0));
     
     //rect(1355, 480, 45, 100);
     if ((abs(deg - 180) < 10)&&
         (abs(w - 1355) < 45) &&
         (abs(h - 480) < 100)){
-      tint(255, 255);
+      
+      //tint(255, 255);
 
       level = 1;
       l0_range1 = (int)random(200,255);

@@ -25,12 +25,8 @@ void level1() {
       //int b = (int)ang;
       int b = 230;
       
-      fill(255);
-      //stroke(0);
-      rect(80,50,500,75);
-      fill(0);
-      
-      text("r: "+r + " g:"+g+" b:" +b, 100, 100);
+      fill(r, g, b);
+      upperLeftText("r: "+r + " g:"+g+" b:" +b, 48, color(r, g, b));
       
       if (abs(r - r_match) < 10 &&
         abs(g - g_match) < 10 &&
@@ -57,7 +53,7 @@ void level1() {
         if (!(w > 1260-rad && h > 465-rad)){ 
           //noStroke();
           stroke(255);
-          fill(r, g, b);
+          
           ellipse(w, h, rad, rad);
           
           //fill(r_match, g_match, b_match);
@@ -67,7 +63,7 @@ void level1() {
       }
     }
     else {
-      text("try another fiducial", 100, 100);
+      upperLeftText("try another power", 36, color(0));
     }
   }
 }

@@ -1,4 +1,5 @@
 void level3() {
-  text("Express Yourself", 800 ,450);
+  //textAlign(CENTER, CENTER);
+  text("Draw a door that represents your home.", 100 ,100);
   drawObjects();
 }
