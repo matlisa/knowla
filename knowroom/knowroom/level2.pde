@@ -10,8 +10,6 @@ void level2() {
       int w = o.getScreenX(width);
       int h = o.getScreenY(height);
       int rad = 15;
-
-
       
       float an=atan2(h-height/2, w-height/2); 
       float d=dist(w, h, height/2, height/2); 
@@ -51,11 +49,14 @@ void level2() {
       //}
       if ((totalColor > 0.5*height*height)&&
       (nReflections==4)) {
-        level = 3;
+        
         saveFrame("level2.jpg"); 
+        level = 2.5;
+        alpha = 0;
         countDown = 24;
       }
       else {
+        upperLeftText("number of mirrors: "+nReflections, 36, color(0));
         upperRightText((int)(100*(totalColor/(0.5*height*height)))+" % pixels filled to reach goal", 36, color(0));
       }
     }
@@ -67,12 +68,14 @@ void level2() {
       
       reset("dy/door_dy00.jpg");
       upperLeftText("number of mirrors: "+nReflections, 36, color(0));
+      lowerLeftText("And now we are in China! Look at how the pattern on the door repeats...", 28, color(0));
       
     }
     else {
       //background(255);
       reset("dy/door_dy00.jpg");
       upperLeftText("try another power", 36, color(0));
+      lowerLeftText("And now we are in China! Look at how the pattern on the door repeats...", 28, color(0));
     }
   }
 }

@@ -21,7 +21,7 @@ void level1() {
       int rad = 50;
       
       int r = (int)map(w, 0, width, 0, l0_range1); 
-      int g = (int)map(h, 0, height, l0_range2, 255);
+      int g = (int)map(h, height, 0, l0_range2, 255);
       //int b = (int)ang;
       int b = 230;
       
@@ -43,8 +43,10 @@ void level1() {
         b = b_match;
         
         
-        level = 2;
+        
         saveFrame("level1.jpg"); 
+        level = 1.5;
+        alpha = 0;
         countDown = 24;
         //reset("Doors_test.jpg");
       }
@@ -64,6 +66,7 @@ void level1() {
     }
     else {
       upperLeftText("try another power", 36, color(0));
+      lowerLeftText("Hey look, we are in Tunisia. This door has a unique color...", 30, color(0));
     }
   }
 }

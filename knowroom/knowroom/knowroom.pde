@@ -18,12 +18,15 @@ Animation sidi, dy;
 
 int screenPX, screenPY = 0;
 
-int level = 0;
+float level = 3;
 
 //int frame = 0;
 int countDown = 24;
 int transparency = 255;
+int alpha = 0;
 int l0_range1, l0_range2;
+
+color colorPicker;
 
 float t = abs(sin(frameCount*0.005));
 
@@ -70,6 +73,7 @@ void setup() {
   y = height / 2;
   
   pas=TWO_PI/nReflections; 
+  colorPicker = color(100, 255, 50, 25);
 }
 
 void reset(String image) {
@@ -94,9 +98,14 @@ void draw() {
   playLevel(level);
 }
 
-void playLevel(int i) {
+void playLevel(float i) {
+  
+
   if (i == 0) {
     level0();
+  }
+  else if (i == 0.5) {
+    explanation("explanation_level0.jpg");
   }
   else if (i == 1) {
     PImage l0 = loadImage("level0.jpg");
@@ -106,6 +115,8 @@ void playLevel(int i) {
     
     if (countDown == 0) {
       //tint(255,100);
+      
+      lowerLeftText("Hey look, we are in Tunisia. This door has a unique color...", 30, color(0));
       level1();
     }
     else if (countDown == 1) {
@@ -117,8 +128,12 @@ void playLevel(int i) {
       background(255);
       tint(255,transparency);
       image(l0, 0,0);
+      lowerLeftText("Teleporting...", 30, color(random(155,255)));
       countDown--;
     }
+  }
+  else if (i == 1.5) {
+    explanation("explanation_level1.jpg");
   }
   else if (i == 2) {
     
@@ -130,6 +145,7 @@ void playLevel(int i) {
 
     if (countDown == 0) {
       //tint(255,100);
+      lowerLeftText("And now we are in China! Look at how the pattern on the door repeats...", 28, color(0));
       level2();
     }
     else if (countDown == 1) {
@@ -137,6 +153,7 @@ void playLevel(int i) {
       countDown--;
     }
     else {
+      lowerLeftText("Teleporting...", 30,  color(random(155,255)));
       countDown--;
       //pushMatrix();
       //translate(780, 400);
@@ -144,6 +161,9 @@ void playLevel(int i) {
       //image(cur, 0, 0, 45, 100);
       //popMatrix();
     }
+  }
+  else if (i == 2.5) {
+    explanation("explanation_level2.jpg");
   }
   else if (i == 3) {
     dy.display(0,0);
@@ -156,6 +176,7 @@ void playLevel(int i) {
       countDown--;
     }
     else {
+      lowerLeftText("Teleporting...", 30,  color(random(155,255)));
       countDown--;
     }
   }
@@ -174,9 +195,9 @@ void refresh(TuioTime t) {
   );
 }
 
-void variableEllipse(int x,int y,int px,int py) {
+void variableEllipse(int x,int y,int px,int py, color col) {
   int speed = abs(x - px) + abs(y - py);
-  stroke(speed);
+  stroke(col, 255-speed);
   ellipse(x, y, speed, speed);
 }
 
@@ -209,4 +230,19 @@ class Animation {
   //int getWidth() {
   //  return images[0].width;
   //}
+}
+
+void explanation(String imagePath){
+  PImage exp0 = loadImage(imagePath);
+  
+  if (countDown == 0) {
+    next();
+  }
+  else {
+    alpha += 10;
+    background(255);
+    tint(255,alpha);
+    image(exp0, 0,0);
+    countDown--;
+  }
 }

@@ -41,6 +41,7 @@ void level0() {
     //triangle(-d/4, -d/4, 0, -d, d/4, -d/4);
     popMatrix();
     
+    lowerLeftText("Welcome to Stanford! You have the key... Let's see where this door takes us.", 30, color(0));
     upperLeftText("angle: "+deg, 48, color(0));
     upperRightText("remember to always use the doors for a clue", 30, color(0));
     
@@ -50,13 +51,13 @@ void level0() {
         (abs(h - 480) < 100)){
       
       //tint(255, 255);
-
-      level = 1;
+      saveFrame("level0.jpg"); 
+      level = 0.5;
       l0_range1 = (int)random(200,255);
       l0_range2 = (int)random(0, 55);
       //countDown = 100;
 
-      saveFrame("level0.jpg"); 
+      
     }
     
   }

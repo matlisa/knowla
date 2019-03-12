@@ -1,5 +1,5 @@
 void level3() {
   //textAlign(CENTER, CENTER);
-  text("Draw a door that represents your home.", 100 ,100);
+  upperLeftText("Draw a door that shows where you want to go.", 36,color(0));
   drawObjects();
 }
