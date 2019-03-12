@@ -14,7 +14,7 @@ PGraphics buffer;
 PImage bg;
 PImage cur;
 
-Animation sidi, sidi2;
+Animation sidi, dy;
 
 int screenPX, screenPY = 0;
 
@@ -30,6 +30,14 @@ float t = abs(sin(frameCount*0.005));
 String message = "tickle";
 float x, y; // X and Y coordinates of text
 float hr, vr;  // horizontal and vertical radius of the text
+
+
+PImage img;
+int slices = 12;
+float angle = PI/slices;
+PShape mySlice;
+float radius;
+
 
 void setup() {
   
@@ -56,7 +64,7 @@ void setup() {
   
   // door 1
   sidi = new Animation("sidi/door_sidi", countDown+1);
-  sidi2 = new Animation("sidi/door_sidi", countDown+1);
+  dy = new Animation("dy/door_dy", countDown+1);
 
 
   tuioClient  = new TuioProcessing(this);
@@ -69,6 +77,8 @@ void setup() {
   noStroke();
   x = width / 2;
   y = height / 2;
+  
+
 }
 
 void reset(String image) {
@@ -110,35 +120,54 @@ void playLevel(int i) {
       //frame = 0;
     }
     else {
+      
       transparency = transparency-10;
       background(255);
       tint(255,transparency);
       image(l0, 0,0);
+      
       countDown--;
     }
   }
-
-
   else if (i == 2) {
     
     sidi.display(0,0);
+    //pushMatrix();
+    //rotate(radians(180));
+    //image(cur, 1377, 666, 45, 100);
+    //popMatrix();
 
     if (countDown == 0) {
       level2();
     }
     else if (countDown == 1) {
-      background(255);
-      text("alskdjflaksdflaksdlfkj", 100,100);
+      //background(255);
+      reset("dy/door_dy00.jpg");
       countDown--;
       //frame = 0;
     }
     else {
       countDown--;
+      //pushMatrix();
+      //translate(780, 400);
+      //rotate(PI);
+      //image(cur, 0, 0, 45, 100);
+      //popMatrix();
+
     }
   }
   else if (i == 3) {
-    //frame = 0;
-    sidi2.display(0,0);
+    dy.display(0,0);
+    if (countDown == 0) {
+      level3();
+    }
+    else if (countDown == 1) {
+      background(255);
+      countDown--;
+    }
+    else {
+      countDown--;
+    }
   }
 }
 

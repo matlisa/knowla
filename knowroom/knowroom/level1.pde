@@ -41,6 +41,7 @@ void level1() {
         //textFont(font); 
         //text("ya did it", w, h);
         
+        
         r = r_match;
         g = g_match;
         b = b_match;
@@ -54,7 +55,8 @@ void level1() {
       else {
 
         if (!(w > 1260-rad && h > 465-rad)){ 
-          noStroke();
+          //noStroke();
+          stroke(255);
           fill(r, g, b);
           ellipse(w, h, rad, rad);
           
