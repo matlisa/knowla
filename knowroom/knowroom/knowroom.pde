@@ -6,6 +6,7 @@
 
 import TUIO.*;
 TuioProcessing tuioClient;
+String person;
 
 PFont font;
 
@@ -18,7 +19,7 @@ Animation sidi, dy;
 
 int screenPX, screenPY = 0;
 
-float level = 3;
+float level = 0;
 
 //int frame = 0;
 int countDown = 24;
@@ -35,7 +36,7 @@ float x, y; // X and Y coordinates of text
 float hr, vr;  // horizontal and vertical radius of the text
 
 void setup() {
-  
+  person = "eszter";
   frameRate(24);
   size(1600, 900);
   //fullScreen();
@@ -183,7 +184,12 @@ void playLevel(float i) {
 }
 
 void keyPressed() {
-  saveFrame("screenshot.png"); 
+  int d = day();    // Values from 1 - 31
+  int m = month();  // Values from 1 - 12
+  int y = year();
+  int h = hour();
+  int mi = minute();
+  saveFrame("screenshot/screenshot"+y+m+d+h+mi+".png"); 
 }
 
 
